@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 type Product = { id: string; title: string; price: number; image: string };
 
 export default function ProductCard({ product }: { product: Product }) {
@@ -7,11 +8,13 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="border rounded-lg shadow-sm overflow-hidden bg-white/5 ring-1 ring-white/10 hover:shadow-md transition">
       <Link href={`/products/${encodeURIComponent(product.id)}`}>
         <div className="relative w-full aspect-[4/3] bg-gray-100 dark:bg-gray-800">
-          <img
+          <Image
             src={product.image || "/file.svg"}
             alt={product.title}
-            className="absolute inset-0 w-full h-full object-contain p-2"
-            loading="lazy"
+            fill
+            className="object-contain p-2"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={false}
           />
         </div>
       </Link>
