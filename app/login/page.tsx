@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthProvider";
 import { z } from "zod";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 export default function LoginPage() {
   const { login } = useAuth();
